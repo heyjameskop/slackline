@@ -1,17 +1,19 @@
 import React from "react";
+import DataContext from "./context/DataContext";
+import { useContext } from "react";
 
-const ShowProduct = ({ selectedProduct }) => {
-  const product = selectedProduct;
+const ShowProduct = () => {
+  const { selectedProduct } = useContext(DataContext);
   return (
     <>
       <div className="itemInfo">
-        <img src={product.image} alt="" className="productImage" />
-        <h1>{product.title}</h1>
-        <div>{product.subtitle}</div>
+        <img src={selectedProduct.image} alt="" className="productImage" />
+        <h1>{selectedProduct.title}</h1>
+        <div>{selectedProduct.subtitle}</div>
       </div>
       <div className="options">
         <ul>
-          {product.tags.map((tag, index) => (
+          {selectedProduct.tags.map((tag, index) => (
             <li key={index}>{tag}</li>
           ))}
         </ul>

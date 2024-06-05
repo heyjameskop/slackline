@@ -1,5 +1,8 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import DataContext from "./context/DataContext";
+import { useContext } from "react";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,7 +11,9 @@ import {
   LineElement,
 } from "chart.js";
 
-const ChartProduct = ({ selectedProduct }) => {
+const ChartProduct = () => {
+  const { selectedProduct } = useContext(DataContext);
+  if (Object.entries(selectedProduct).length === 0) return "";
   const values = selectedProduct.sales.map((obj) => {
     return `${obj.unitsSold}`;
   });
