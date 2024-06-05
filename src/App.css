@@ -1,38 +1,179 @@
-.App {
+:root {
+  --lighter-color: #3498db;
+  --darker-color: #384557;
+  --dark-color: #052849;
+  --very-light-color: #f6f8fa;
+  --highlight-color: #ff9;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Century Gothic", Arial, sans-serif;
+  background-color: var(--very-light-color);
+  color: var(--darker-color);
+}
+.logo {
+  width: 100px;
+  padding: 20px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background-color: var(--dark-color);
+  height: 88px;
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+}
+
+.left-column {
+  background-color: #fff;
+  width: 375px;
+  height: 100%;
+  margin: 80px 10px 0 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 80px 20px 0 10px;
+}
+
+.right-box {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  flex: 1;
+  background-color: #fff;
+}
+
+.top-row {
+  padding: 20px;
+}
+
+.bottom-row {
+  margin-top: 80px;
+}
+
+.itemInfo {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.itemInfo h1 {
+  text-align: center;
+  font-size: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.itemInfo img {
+  padding-top: 20px;
+  max-width: 148px;
+  height: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.itemInfo div {
+  text-align: center;
+  margin: auto 40px;
+  font-size: 14px;
+  color: var(--lighter-color);
+}
+
+.options ul {
+  padding: 0;
+  list-style-type: none;
+  margin-left: 16px;
+}
+
+.options ul li {
+  padding: 6px 14px;
+  border: solid 1px var(--lighter-color);
+  border-radius: 6px;
+  display: inline-block;
+  margin: 6px;
+  font-size: 12px;
+}
+
+.options ul li:hover {
+  background-color: var(--lighter-color);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.top-row h1 {
+  font-size: 20px;
+  font-weight: normal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chart .head,
+.chart .productBody {
+  display: flex;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+
+.chart .productBody .highlight {
+  display: flex;
+  width: 100%;
+}
+
+.highlight {
+  background-color: var(--highlight-color);
+  transition: background-color 0.75s ease;
+}
+
+.chart .productBody:not(:hover) .highlight {
+  background-color: transparent;
+}
+
+.chart .head span,
+.chart .productBody span {
+  flex: 1;
+  border-bottom: solid 1px var(--lighter-color);
+}
+
+.chart .head span {
+  padding: 20px;
+}
+
+.chart .productBody .highlight span {
+  padding: 16px;
+}
+
+/* Define the caret */
+.sortable {
+  position: relative;
+  cursor: pointer;
+}
+
+.sortable::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.asc::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.desc::after {
+  transform: translateY(-50%);
 }
